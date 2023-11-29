@@ -1,0 +1,12 @@
+.bigbox {
+    background-color: azure;
+    border: 1px red solid;
+    padding: 20px;
+    /* height: 500px; */
+}
+
+.smallbox {
+    background-color: bisque;
+    border: 1px red solid;
+    padding: 20px;
+}
