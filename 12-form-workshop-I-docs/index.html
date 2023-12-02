@@ -12,7 +12,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="styles.css" />
-    <!-- #2 Seperate PoperJS and BootstrapJS-->
+    <!-- #2 Separate PopperJS and BootstrapJS-->
     <script
       defer
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
@@ -27,20 +27,26 @@
     ></script>
   </head>
   <body class="bg-danger-subtle">
-    <div class="row justify-content-center m-3 gap-3">
-      <div class="col-12 text-center text-white bg-primary rounded p-3">
+    <div class="row justify-content-center m-3 gap-3 h-100">
+      <div class="col-md-12 text-center text-white bg-primary rounded p-3 shadow-lg">
         <strong>Try it free for 7 days </strong>then $20/mo. thereafter
       </div>
-      <div class="row bg-white rounded px-5 py-5">
+      <div class="row bg-white rounded shadow-lg px-5 py-5">
         <div class="col-12">
-          <form>
+          <form class="needs-validation" novalidate>
           <div class="form-floating">
-            <input class="form-control" id="floating-name" type="text" placeholder="First Name" />
+            <input class="form-control" id="floating-name" type="text" placeholder="First Name" required />
             <label for="floating-name">First Name</label>
+            <div class="invalid-feedback">
+                Please provide a name.
+            </div>
           </div>
           <div class="form-floating my-3">
-            <input class="form-control" id="floating-lastname" type="text" placeholder="Last Name" />
+            <input class="form-control" id="floating-lastname" type="text" placeholder="Last Name" required />
             <label for="floating-lastname">Last Name</label>
+            <div class="invalid-feedback">
+                Please provide a last name.
+            </div>
           </div>
           <div class="form-floating my-3">
             <input
@@ -48,29 +54,58 @@
               type="email"
               id="floating-email"
               placeholder="Email Address"
+              required
             />
             <label for="floating-email">Email Address</label>
+            <div class="invalid-feedback">
+                Please provide a valid email.
+            </div>
           </div>
-          <div  class="form-floating my-3">
+          <div class="form-floating my-3">
             <input
               class="form-control"
               type="password"
               id="floating-password"
               placeholder="Password"
+              required
             />
             <label for="floating-password">Password</label>
-          </div class="m-3">
+            <div class="invalid-feedback">
+                Please provide a password.
+            </div>
+          </div>
+          <div>
+            <button class="btn btn-success w-100 py-2" type="submit">CLAIM YOUR FREE TRIAL</button>
+          </div>
         </form>
-            <button class="btn btn-success w-100 py-2">CLAIM YOUR FREE TRIAL</button>
+            
           </div>
           <div class="text-center mt-3">
             <small class="m-3 text-black-50">
             By clicking the button, you are agreeing to our
-            <a class="text-danger link-underline link-underline-opacity-0">Terms and Services</a>
+            <a href="https://google.com" class="text-danger link-underline link-underline-opacity-0">Terms and Services</a>
             </small>
           </div>
         </div>
       </div>
     </div>
   </body>
+  <script>
+  (() => {
+  'use strict'
+  
+  const forms = document.querySelectorAll('.needs-validation')
+
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+  </script>
 </html>
