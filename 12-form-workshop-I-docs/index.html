@@ -27,24 +27,49 @@
     ></script>
   </head>
   <body class="bg-danger-subtle">
-    <div class="container bg-secondary my-3">
-      <div class="text-center bg-info py-3 my-3">
+    <div class="row justify-content-center m-3 gap-3">
+      <div class="col-12 text-center bg-info py-3">
         <h5>Try it free for 7 days then $20/mo. thereafter</h5>
       </div>
-      <div class="bg-danger px-5 py-4">
-        <form>
-          <input class="form-control" type="text" placeholder="First Name" />
-          <input class="form-control" type="text" placeholder="Last Name" />
-          <input
-            class="form-control"
-            type="email"
-            placeholder="Email Address"
-          />
-          <input class="form-control" type="password" placeholder="Password" />
-          <button class="btn btn-success w-100">CLAIM YOUR FREE TRIAL</button>
+      <div class="row bg-white px-5 py-4">
+        <div class="col-12">
+          <form>
+          <div class="form-floating">
+            <input class="form-control" id="floating-name" type="text" placeholder="First Name" />
+            <label for="floating-name">First Name</label>
+          </div>
+          <div class="form-floating my-3">
+            <input class="form-control" id="floating-lastname" type="text" placeholder="Last Name" />
+            <label for="floating-lastname">Last Name</label>
+          </div>
+          <div class="form-floating my-3">
+            <input
+              class="form-control"
+              type="email"
+              id="floating-email"
+              placeholder="Email Address"
+            />
+            <label for="floating-email">Email Address</label>
+          </div>
+          <div  class="form-floating my-3">
+            <input
+              class="form-control"
+              type="password"
+              id="floating-password"
+              placeholder="Password"
+            />
+            <label for="floating-password">Password</label>
+          </div class="m-3">
+          
         </form>
-        <div>
-          By clicking the button, you are agreeing to our Terms and Services
+            <button class="btn btn-success w-100 py-2">CLAIM YOUR FREE TRIAL</button>
+          </div>
+          <div>
+            <h6 class="text-center m-3 text-black-50">
+            By clicking the button, you are agreeing to our
+            <a class="text-danger link-underline link-underline-opacity-0">Terms and Services</a>
+            </h6>
+          </div>
         </div>
       </div>
     </div>
