@@ -28,6 +28,9 @@
   </head>
   <body class="bg-danger-subtle">
     <div class="row justify-content-center m-3 gap-3 h-100">
+      <div id="alertMessage" class="col-md-12 alert alert-success mt-3" style="display: none;">
+        Successfully filled all information!
+      </div>
       <div class="col-md-12 text-center text-white bg-primary rounded p-3 shadow-lg">
         <strong>Try it free for 7 days </strong>then $20/mo. thereafter
       </div>
@@ -74,38 +77,73 @@
                 Please provide a password.
             </div>
           </div>
-          <div>
-            <button class="btn btn-success w-100 py-2" type="submit">CLAIM YOUR FREE TRIAL</button>
-          </div>
-        </form>
-            
+            <div>
+              <button class="btn btn-success w-100 py-2" onclick="checkForm()">CLAIM YOUR FREE TRIAL</button>
+            </div>
+          </form>
           </div>
           <div class="text-center mt-3">
             <small class="m-3 text-black-50">
             By clicking the button, you are agreeing to our
-            <a href="https://google.com" class="text-danger link-underline link-underline-opacity-0">Terms and Services</a>
+            <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal" class="text-danger link-underline link-underline-opacity-0">Terms and Services</a>
             </small>
+          </div>
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Terms and Services</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultrices mattis consequat. Praesent in augue quis velit tristique blandit quis ut turpis. Donec malesuada consequat ultrices. Morbi a leo sem. Nunc faucibus aliquet risus, id sollicitudin neque suscipit ac. Aliquam sed blandit felis, ac mattis neque. Phasellus egestas id urna id laoreet. Morbi mauris neque, mollis in finibus non, elementum ac massa. Integer faucibus quis enim vitae congue. Pellentesque ligula nisl, vulputate a porta id, imperdiet vel mi. Etiam eu sollicitudin eros. Aliquam non diam ut eros egestas lobortis quis non lectus.</p>
+                    <br>
+                    <p>Nam sed neque tortor. Aenean eget augue ac lorem gravida blandit vel sed erat. Nam fringilla eget magna sit amet cursus. Maecenas nec dolor eu risus condimentum tempor. Nullam pretium enim quis lorem hendrerit ultricies. Mauris lacus mauris, tempus vitae porta eu, cursus eget risus. Quisque pharetra quam luctus, lacinia nisl sit amet, ornare ligula. Morbi tincidunt metus a tortor dignissim, ac scelerisque dui mattis. Cras lacus leo, lacinia et sapien quis, varius feugiat magna. Ut quis mi id libero rhoncus interdum. Nullam rhoncus elit neque, eget interdum lacus sodales sit amet. Quisque laoreet dui id quam scelerisque, vel semper turpis feugiat. Suspendisse eu nisi pharetra, consectetur nisi et, posuere nibh. Nulla sed placerat lorem. Aliquam condimentum lectus at est sodales, semper malesuada tortor volutpat. Pellentesque dignissim leo arcu, at condimentum massa commodo vel.</p>
+                    <p>Suspendisse hendrerit viverra lacus, non euismod dolor pretium a. Sed lacinia ut dui id ornare. Etiam semper vestibulum augue at hendrerit. Phasellus sed nulla nec ipsum tempor vehicula id vel nulla. Nulla tristique sagittis nunc eget luctus. Nulla nulla orci, posuere a pretium et, porttitor in lorem. In scelerisque, dolor ac aliquet fringilla, ipsum augue hendrerit nunc, ac ullamcorper velit lectus ut quam. Suspendisse tempor tellus a nisi malesuada dapibus. Sed ultricies volutpat lectus ultricies ultricies. In in tortor suscipit, convallis ante vel, scelerisque urna. Ut aliquet nulla a velit rhoncus interdum. Donec ante elit, auctor tincidunt nisi cursus, mattis hendrerit tellus. Aenean bibendum aliquam porta.</p>
+                    <p>Quisque ut magna et urna tincidunt sollicitudin a ac velit. Cras elementum dolor posuere semper aliquam. Fusce sodales tortor id quam faucibus tincidunt. Donec ultricies, lorem eget convallis feugiat, ex risus iaculis purus, eu sollicitudin justo ipsum vel arcu. Sed sagittis massa nibh, nec congue libero porta sed. In pellentesque luctus congue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur nibh elit, laoreet in enim luctus, elementum vestibulum lacus. In nec urna pretium, faucibus nibh et, ultricies sem.</p>
+                    <p>Sed sed suscipit justo. Pellentesque rhoncus eleifend turpis, a lacinia urna euismod a. Maecenas ac nisi vitae tellus sagittis aliquet. Nam vitae erat vitae leo fermentum pulvinar finibus sit amet eros. Duis maximus tempus efficitur. Nam ut turpis eget purus tincidunt faucibus. Nulla blandit tellus a ex euismod vulputate. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut et mattis enim. Vestibulum luctus est sem, et volutpat ex porta eget. Cras non bibendum mi.</p>
+                  </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </body>
+
   <script>
-  (() => {
-  'use strict'
-  
-  const forms = document.querySelectorAll('.needs-validation')
+    (() => 
+    {
+      'use strict'
+      const forms = document.querySelectorAll('.needs-validation')
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => 
+        {
+          if (!form.checkValidity()) 
+            {
+              event.preventDefault()
+              event.stopPropagation()
+            }
+            form.classList.add('was-validated')
+        }, false)
+      })
+    })
+    ()
 
-  Array.from(forms).forEach(form => {
-    form.addEventListener('submit', event => {
-      if (!form.checkValidity()) {
-        event.preventDefault()
-        event.stopPropagation()
+    function checkForm() {
+        if (document.getElementById('floating-name').value !== '' 
+        && document.getElementById('floating-lastname').value !== '' 
+        && document.getElementById('floating-email').value !== '' 
+        && document.getElementById('floating-password').value !== '') {
+            document.getElementById('alertMessage').style.display = 'block';
+        } 
+        else {
+            document.getElementById('alertMessage').style.display = 'none';
+        }
       }
-
-      form.classList.add('was-validated')
-    }, false)
-  })
-})()
   </script>
+  
 </html>
